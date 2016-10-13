@@ -4,7 +4,7 @@
 // @version        0.1.1.20161013.000001
 // @namespace      https://github.com/phoudoin/iitc-scale-highlight
 // @updateURL      https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
-// @downloadURL    https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-coom-scale-highlight.user.js
+// @downloadURL    https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
 // @include        https://www.ingress.com/intel*
 // @include        http://www.ingress.com/intel*
 // @match          https://www.ingress.com/intel*
