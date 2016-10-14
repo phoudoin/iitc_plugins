@@ -61,7 +61,7 @@ window.plugin.commScaleHighlight.formatMindUnit = function(mu, unit) {
   var result = '';
   var amu = Math.abs(mu);
   var span = null;
-  if (amu > 500000) {
+  if (amu > 100000) {
     span = '<span style="color: DarkViolet;">';
   } else if (amu > 50000) {
     span = '<span style="color: red;">';
