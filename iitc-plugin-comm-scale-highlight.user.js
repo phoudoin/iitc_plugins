@@ -2,7 +2,7 @@
 // @id             iitc-plugin-comm-scale-highlight@phoudoin
 // @name           IITC plugin: links & fields scale in COMM
 // @category       Tweaks
-// @version        0.1.1.20161014.000002
+// @version        0.1.1.20161014.000003
 // @namespace      https://github.com/phoudoin/iitc-scale-highlight
 // @updateURL      https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
 // @downloadURL    https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
