@@ -6,7 +6,7 @@
 // @namespace      https://github.com/phoudoin/iitc-scale-highlight
 // @updateURL      https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
 // @downloadURL    https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
-// @description	   [phoudoin-2016-1014] colorized link length and field size in log according depending on their scale.
+// @description	   [phoudoin-2016-10-14] display link length and field size in log according a colors scale.
 // @include        https://www.ingress.com/intel*
 // @include        http://www.ingress.com/intel*
 // @match          https://www.ingress.com/intel*
