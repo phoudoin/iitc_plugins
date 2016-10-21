@@ -2,11 +2,11 @@
 // @id             iitc-plugin-comm-scale-highlight@phoudoin
 // @name           IITC plugin: links & fields scale in COMM
 // @category       Tweaks
-// @version        0.1.1.20161014.000003
+// @version        0.1.1.20161021.000001
 // @namespace      https://github.com/phoudoin/iitc-scale-highlight
 // @updateURL      https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
 // @downloadURL    https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
-// @description	   [phoudoin-2016-10-14] display link length and field size in log according a colors scale.
+// @description	   [phoudoin-2016-10-21] display link length and field size in log according a colors scale.
 // @include        https://www.ingress.com/intel*
 // @include        http://www.ingress.com/intel*
 // @match          https://www.ingress.com/intel*
@@ -84,7 +84,9 @@ window.plugin.commScaleHighlight.setup  = function() {
           var guid = result[0];
           if (plext.markup[1][1].plain==' linked ' || 
             plext.markup[1][1].plain==' destroyed the Link ') {
+
             // Highlight link length
+
             var lat1 = plext.markup[2][1].latE6/1e6;
             var lng1 = plext.markup[2][1].lngE6/1e6;
             var lat2 = plext.markup[4][1].latE6/1e6;
@@ -95,11 +97,14 @@ window.plugin.commScaleHighlight.setup  = function() {
             var msgToAppend = ' ('+window.plugin.commScaleHighlight.formatDistance(dist)+')';
             if ($msg.html().indexOf(msgToAppend) === -1 ) {
               $msg.append(msgToAppend);
+              chat._public.data[guid][2] = $tr.prop('outerHTML');
             }
-            chat._public.data[guid][2] = $tr.prop('outerHTML');
+
           } else if (plext.markup[1][1].plain==' created a Control Field @' || 
             plext.markup[1][1].plain==' destroyed a Control Field @') {
+
             // Highlight field size
+
             // console.log(plext);
             var mu = Number(plext.markup[3][1].plain + plext.markup[4][1].plain);
             var unit = plext.markup[5][1].plain;
@@ -112,18 +117,18 @@ window.plugin.commScaleHighlight.setup  = function() {
             // console.log("$msg"); console.log($msg);
             var toReplace = plext.markup[3][1].plain + plext.markup[4][1].plain + plext.markup[5][1].plain;
             // console.log(toReplace);
-            var i = $msg.html().indexOf(toReplace);
-            if (i === -1 ) {
-              $msg.append(highlight);
-            } else {
+
+            if ($msg.html().indexOf(highlight) === -1) {
               content = $msg.html()
               // console.log(content);
-              content = content.replace(toReplace, highlight);
+              content = content.replace(toReplace, '');
               // console.log(content);
               $msg.html(content);
+              $msg.append(highlight);
               // console.log("$msg.html():" + $msg.html());
+              chat._public.data[guid][2] = $tr.prop('outerHTML');
             }
-            chat._public.data[guid][2] = $tr.prop('outerHTML');
+
           } else {
             // console.log("plext:");
             // console.log(plext);
