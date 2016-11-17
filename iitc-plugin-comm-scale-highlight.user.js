@@ -82,6 +82,7 @@ window.plugin.commScaleHighlight.setup  = function() {
       $.each(data.raw.result, function(i, result) {
           var plext = result[2].plext;
           var guid = result[0];
+
           if (plext.markup[1][1].plain==' linked ' || 
             plext.markup[1][1].plain==' destroyed the Link ') {
 
@@ -128,6 +129,56 @@ window.plugin.commScaleHighlight.setup  = function() {
               // console.log("$msg.html():" + $msg.html());
               chat._public.data[guid][2] = $tr.prop('outerHTML');
             }
+
+          } else if (plext.markup[1][1].plain==' destroyed a Resonator on ' || 
+                    (plext.plextType == 'SYSTEM_NARROWCAST' && 
+                     plext.markup.length == 4 && 
+                     plext.markup[0][1].plain == 'Your Portal ' &&
+                     plext.markup[2][1].plain == ' neutralized by ' &&
+                     plext.markup[3][1].team == PLAYER.team)) {
+
+            // Highlight JARVIS and ADA virus
+            // Two possibles cases:
+            // - applied on same faction portals (then, player destroying resonators is same team as the portal or PLAYER alignement)
+            // - applied on opposite faction portals (then, we have up to 8 notifications of resonator destroyed for same portal at same timestamp
+            //   as all resonators are destroyed at once, instantly)
+    
+            // console.log(plext);
+            
+            var player_team;
+            var portal_team;
+            var virus_detected = false;
+            if (plext.plextType == 'SYSTEM_NARROWCAST') {
+              // detect virus when your portal is destroyed by same faction than you...
+              player_team = plext.markup[3][1].team;
+              portal_team = plext.markup[1][1].team;
+              virus_detected = player_team == PLAYER.team;
+            } else {
+              // detect on resonator destruction context
+              player_team = plext.markup[0][1].team;
+              portal_team = plext.markup[2][1].team;
+
+              if (player_team == portal_team) {
+                // virus detected when a player is destroying a portal of his own faction...
+                virus_detected = true;
+              } else {
+                // TODO: try to detect virus used to take down adverse portal, by comparing similar destruction log at same timestamp
+              }
+            }
+           
+            if (virus_detected) {
+              console.log('VIRUS DETECTED, by ' + player_team + ' faction, portal is now ' + portal_team);
+              // Portal tilted by faction owning it
+              var highlight = ' ('+window.plugin.commScaleHighlight.formatVirus(portal_team)+')';
+              // console.log("highlight:");
+              // console.log(highlight);
+              var $tr = $(chat._public.data[guid][2]);
+              var $msg = $tr.find('td:last');
+              if ($msg.html().indexOf(highlight) === -1 ) {
+                $msg.append(highlight);
+                chat._public.data[guid][2] = $tr.prop('outerHTML');
+              }
+            }          
 
           } else {
             // console.log("plext:");
