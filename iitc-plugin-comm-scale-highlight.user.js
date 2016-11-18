@@ -77,6 +77,17 @@ window.plugin.commScaleHighlight.formatMindUnit = function(mu, unit) {
   return result;
 }
 
+window.plugin.commScaleHighlight.formatVirus = function(new_portal_team) {
+  var result;
+  if (new_portal_team == 'RESISTANCE') {
+    result = '<span style="color: ' + COLORS[TEAM_RES] + ';"> ADA !!!';
+  } else {
+    result = '<span style="color: ' + COLORS[TEAM_ENL] + ';"> JARVIS !!!';
+  }
+  result += '</span>';
+  return result;
+}
+
 window.plugin.commScaleHighlight.setup  = function() {
   window.addHook('publicChatDataAvailable', function(data) {
       $.each(data.raw.result, function(i, result) {
