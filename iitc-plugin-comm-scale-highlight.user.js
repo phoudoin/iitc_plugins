@@ -2,11 +2,11 @@
 // @id             iitc-plugin-comm-scale-highlight@phoudoin
 // @name           IITC plugin: links & fields scale in COMM
 // @category       Tweaks
-// @version        1.2016.12.15.001
+// @version        1.2016.12.16.001
 // @namespace      https://github.com/phoudoin/iitc-scale-highlight
 // @updateURL      https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
 // @downloadURL    https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
-// @description	   [phoudoin-2016-12-15] display link length and field size in log according a colors scale.
+// @description    [phoudoin-2016-12-15] display link length and field size in log according a colors scale.
 // @include        https://www.ingress.com/intel*
 // @include        http://www.ingress.com/intel*
 // @match          https://www.ingress.com/intel*
@@ -20,7 +20,7 @@
 // See last three lines of this file where it is used.
 //
 
-function wrapper() {
+function wrapper(plugin_info) {
     // In case IITC is not available yet, define the base plugin object
     if (typeof window.plugin !== "function") {
         window.plugin = function () {};
@@ -206,6 +206,8 @@ function wrapper() {
         delete self.setup;  // Delete setup to ensure init can't be run again.
     };
 
+    self.setup.info = plugin_info;
+    
     // IITC plugin setup
     if (window.iitcLoaded && typeof self.setup === "function") {
         self.setup();
@@ -216,6 +218,10 @@ function wrapper() {
     }
 }
 
+var info = {};
+if (typeof GM_info !== 'undefined' && GM_info && GM_info.script) 
+    info.script = { version: GM_info.script.version, name: GM_info.script.name, description: GM_info.script.description };
+
 var script = document.createElement("script");
-script.appendChild(document.createTextNode("(" + wrapper + ")();"));
+script.appendChild(document.createTextNode('('+ wrapper +')('+JSON.stringify(info)+');'));
 (document.body || document.head || document.documentElement).appendChild(script);
