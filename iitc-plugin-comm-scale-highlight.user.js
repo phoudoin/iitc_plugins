@@ -2,15 +2,15 @@
 // @id             iitc-plugin-comm-scale-highlight@phoudoin
 // @name           IITC plugin: links & fields scale in COMM
 // @category       Tweaks
-// @version        1.2016.12.16.001
+// @version        1.2017.02.03.001
 // @namespace      https://github.com/phoudoin/iitc-scale-highlight
 // @updateURL      https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
 // @downloadURL    https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
-// @description    [phoudoin-2016-12-15] display link length and field size in log according a colors scale.
-// @include        https://www.ingress.com/intel*
-// @include        http://www.ingress.com/intel*
-// @match          https://www.ingress.com/intel*
-// @match          http://www.ingress.com/intel*
+// @description    [phoudoin-2017-02-03] display link length and field size in log according a colors scale.
+// @include        https://*.ingress.com/intel*
+// @include        http://*.ingress.com/intel*
+// @match          https://*.ingress.com/intel*
+// @match          http://*.ingress.com/intel*
 // @grant          none
 // ==/UserScript==
 
@@ -199,6 +199,7 @@ function wrapper(plugin_info) {
     };
 
     // Setup function called by IITC.
+
     self.setup = function() {
         var fname = "plugin.commScaleHighlight.setup";
         window.addHook('publicChatDataAvailable', self.onPublicChatDataAvailable);
