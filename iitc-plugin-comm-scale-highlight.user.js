@@ -76,9 +76,9 @@ function wrapper(plugin_info) {
     self.formatVirus = function(new_portal_team) {
         var result;
         if (new_portal_team == 'RESISTANCE') {
-            result = '<span style="color: ' + COLORS[TEAM_RES] + ';"> ADA !!!';
+            result = '<span style="color: ' + COLORS[TEAM_RES] + ';">ADA !!!';
         } else {
-            result = '<span style="color: ' + COLORS[TEAM_ENL] + ';"> JARVIS !!!';
+            result = '<span style="color: ' + COLORS[TEAM_ENL] + ';">JARVIS !!!';
         }
         result += '</span>';
         return result;
