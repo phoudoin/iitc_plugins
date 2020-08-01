@@ -2,15 +2,15 @@
 // @id             iitc-plugin-comm-scale-highlight@phoudoin
 // @name           IITC plugin: links & fields scale in COMM
 // @category       Tweaks
-// @version        1.2017.02.03.001
+// @version        1.2020.08.01.001
 // @namespace      https://github.com/phoudoin/iitc-scale-highlight
 // @updateURL      https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
 // @downloadURL    https://github.com/phoudoin/iitc_plugins/raw/master/iitc-plugin-comm-scale-highlight.user.js
-// @description    [phoudoin-2017-02-03] display link length and field size in log according a colors scale.
-// @include        https://*.ingress.com/intel*
-// @include        http://*.ingress.com/intel*
-// @match          https://*.ingress.com/intel*
-// @match          http://*.ingress.com/intel*
+// @description    [phoudoin-2020-08-01] display link length and field size in log according a colors scale.
+// @include        https://intel.ingress.com/*
+// @include        http://intel.ingress.com/*
+// @match          https://intel.ingress.com/*
+// @match          http://intel.ingress.com/*
 // @grant          none
 // ==/UserScript==
 
